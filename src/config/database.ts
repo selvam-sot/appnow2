@@ -10,7 +10,7 @@ const connectDB = async (): Promise<void> => {
         logger.info('Connecting to MongoDB...');
         
         // First try connecting with the MongoDB native driver
-        mongoClient = new MongoClient('mongodb://test');
+        mongoClient = new MongoClient('mongodb://appointmentnowdb:3mQCMfdjGkJhkKdHKORs4xDuHarCDVs8kSnxGWouwVV1hzE6wxfkBFGncNjN9s8TRbz7aNvKU0wzACDbGCABtQ==@appointmentnowdb.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&maxIdleTimeMS=120000&appName=@appointmentnowdb@');
         await mongoClient.connect();
         logger.info('Successfully connected to MongoDB with native driver!');
         
@@ -19,7 +19,7 @@ const connectDB = async (): Promise<void> => {
         
         // Now try with Mongoose - only after confirming MongoDB connection works
         try {
-            await mongoose.connect('mongodb://test');
+            await mongoose.connect('mongodb://appointmentnowdb:3mQCMfdjGkJhkKdHKORs4xDuHarCDVs8kSnxGWouwVV1hzE6wxfkBFGncNjN9s8TRbz7aNvKU0wzACDbGCABtQ==@appointmentnowdb.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&maxIdleTimeMS=120000&appName=@appointmentnowdb@');
             logger.info('Successfully connected to MongoDB with Mongoose!');
         } catch (mongooseErr) {
             logger.error('Mongoose connection failed, but MongoDB native driver is working:', mongooseErr);
