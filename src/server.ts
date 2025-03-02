@@ -1,13 +1,33 @@
+// src/server.ts
 import app from './app';
-import dotenv from 'dotenv';
+import winston from 'winston';
 
-// Load environment variables
-dotenv.config();
+// Configure Winston logger 
+const logger = winston.createLogger({
+    level: 'info',
+    format: winston.format.combine(
+        winston.format.timestamp(),
+        winston.format.json()
+    ),
+    transports: [
+        new winston.transports.Console()
+    ]
+});
 
-// Start the server
-// Azure Web Apps expects port 8080, or it uses the PORT environment variable
-const port = process.env.PORT || 8080;
+// Get port from environment variable
+const PORT = process.env.PORT || 8080;
 
-app.listen(port, () => {
-    console.log(`Server is running on port: ${port}`);
+// Start server
+app.listen(PORT, () => {
+    console.log(`Server is running on port: ${PORT}`);
+    logger.info(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
+});
+
+// Handle unhandled promise rejections
+process.on('unhandledRejection', (err: Error) => {
+    logger.error(`Unhandled Rejection: ${err.message}`);
+    console.error('UNHANDLED REJECTION:', err);
+
+  // Allow the process to continue - only exit for critical errors
+  // process.exit(1);
 });
