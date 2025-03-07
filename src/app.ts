@@ -6,7 +6,7 @@ import dotenv from 'dotenv';
 import './alias';
 
 // Import the simple database connection
-import connectDB, { getMongoClient } from './config/database';
+//import connectDB, { getMongoClient } from './config/database';
 import { errorHandler, notFound } from './middlewares/error.middleware';
 
 // Import routes
@@ -19,9 +19,9 @@ dotenv.config();
 const app = express();
 
 // Connect to MongoDB
-connectDB()
-  .then(() => console.log('Database connection initialized'))
-  .catch(err => console.error('Failed to initialize database connection:', err));
+// connectDB()
+//   .then(() => console.log('Database connection initialized'))
+//   .catch(err => console.error('Failed to initialize database connection:', err));
 
 // CORS configuration
 const corsOptions = {
@@ -42,12 +42,11 @@ app.get('/', (req: Request, res: Response) => {
 
 // Health check route
 app.get('/health', (req: Request, res: Response) => {
-  const client = getMongoClient();
+  //const client = getMongoClient();
   
   res.status(200).json({ 
     status: 'ok',
-    environment: process.env.NODE_ENV || 'development',
-    mongoConnection: client ? 'connected' : 'disconnected'
+    environment: process.env.NODE_ENV || 'development'
   });
 });
 
