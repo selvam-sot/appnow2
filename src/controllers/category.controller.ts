@@ -1,8 +1,6 @@
 import { Request, Response } from 'express';
 import { validationResult } from 'express-validator';
 import Category from '../models/category.model';
-import logger from '../config/logger';
-import { AppError } from '../utils/appError.util';
 import { ICategory } from '../interfaces/category.interface';
 
 // Mock data for testing
@@ -80,7 +78,6 @@ export const createCategory = async (req: Request, res: Response) => {
     
     res.status(201).json(newCategory);
   } catch (error: any) {
-    logger.error(`Error in creating category: ${error.message}`);
     res.status(500).json({ message: 'Server error' });
   }
 };
@@ -94,7 +91,6 @@ export const getCategories = async (req: Request, res: Response) => {
     // Return all mock categories
     res.json(mockCategories);
   } catch (error: any) {
-    logger.error(`Error in fetching categories: ${error.message}`);
     res.status(500).json({ message: 'Server error' });
   }
 };
@@ -112,7 +108,6 @@ export const getCategoryList = async (req: Request, res: Response) => {
     
     res.json(activeCategories);
   } catch (error: any) {
-    logger.error(`Error in fetching categories: ${error.message}`);
     res.status(500).json({ message: 'Server error' });
   }
 };
@@ -128,14 +123,9 @@ export const getCategoryById = async (req: Request, res: Response) => {
     if (category) {
       res.json(category);
     } else {
-      throw new AppError('Category not found', 404);
+      //
     }
   } catch (error: any) {
-    logger.error(`Error in fetching category: ${error.message}`);
-    
-    if (error instanceof AppError) {
-      return res.status(error.statusCode).json({ message: error.message });
-    }
     
     res.status(500).json({ message: 'Server error' });
   }
@@ -174,7 +164,6 @@ export const updateCategory = async (req: Request, res: Response) => {
       res.status(404).json({ message: 'Category not found' });
     }
   } catch (error: any) {
-    logger.error(`Error in updating category: ${error.message}`);
     res.status(500).json({ message: 'Server error' });
   }
 };
@@ -196,7 +185,6 @@ export const deleteCategory = async (req: Request, res: Response) => {
       res.status(404).json({ message: 'Category not found' });
     }
   } catch (error: any) {
-    logger.error(`Error in deleting category: ${error.message}`);
     res.status(500).json({ message: 'Server error' });
   }
 };
@@ -218,7 +206,6 @@ export const toggleFavorite = async (req: Request, res: Response) => {
       res.status(404).json({ message: 'Category not found' });
     }
   } catch (error: any) {
-    logger.error(`Error in toggling favorite status: ${error.message}`);
     res.status(500).json({ message: 'Server error' });
   }
 };
@@ -236,7 +223,6 @@ export const getFavoriteCategories = async (req: Request, res: Response) => {
     
     res.json(favoriteCategories);
   } catch (error: any) {
-    logger.error(`Error in fetching favorite categories: ${error.message}`);
     res.status(500).json({ message: 'Server error' });
   }
 };

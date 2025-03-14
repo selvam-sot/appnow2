@@ -4,13 +4,9 @@ import cors from 'cors';
 import path from 'path';
 import dotenv from 'dotenv';
 
-// Import the simple database connection
-//import connectDB, { getMongoClient } from './config/database';
-import { errorHandler, notFound } from './middlewares/error.middleware';
 
 // Import routes
 import adminRoutes from './routes/v1/admin';
-import userRoutes from './routes/v1/user';
 
 // Load environment variables
 dotenv.config();
@@ -54,10 +50,5 @@ app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 // API routes
 app.use('/api/v1/admin', adminRoutes);
-app.use('/api/v1/user', userRoutes);
-
-// Error handling
-app.use(notFound);
-app.use(errorHandler);
 
 export default app;
