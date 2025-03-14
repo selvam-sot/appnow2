@@ -3,7 +3,6 @@ import express, { Request, Response } from 'express';
 import cors from 'cors';
 import path from 'path';
 import dotenv from 'dotenv';
-import './alias';
 
 // Import the simple database connection
 //import connectDB, { getMongoClient } from './config/database';
