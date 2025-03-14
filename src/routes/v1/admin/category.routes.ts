@@ -1,8 +1,8 @@
 import express from 'express';
-import { protect, authorize } from '@middlewares/auth.middleware';
-import { asyncHandler } from '@utils/asyncHandler.util';
-import { createCategory, getCategories, getCategoryById, updateCategory, deleteCategory } from '@controllers/category.controller';
-import { categoryValidationRules } from '@utils/validation.util';
+import { protect, authorize } from './../../../middlewares/auth.middleware';
+import { asyncHandler } from './../../../utils/asyncHandler.util';
+import { createCategory, getCategories, getCategoryById, updateCategory, deleteCategory } from './../../../controllers/category.controller';
+import { categoryValidationRules } from './../../../utils/validation.util';
 
 const router = express.Router();
 

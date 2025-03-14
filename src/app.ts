@@ -9,8 +9,8 @@ import dotenv from 'dotenv';
 import { errorHandler, notFound } from './middlewares/error.middleware';
 
 // Import routes
-import adminRoutes from '@routes/v1/admin';
-import userRoutes from '@routes/v1/user';
+import adminRoutes from './routes/v1/admin';
+import userRoutes from './routes/v1/user';
 
 // Load environment variables
 dotenv.config();

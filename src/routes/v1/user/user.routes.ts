@@ -9,12 +9,12 @@ import {
     getUserProfile,
     updateUserProfile,
     deleteUserAccount
-} from '@controllers/user.controller';
-import { protect, authorize } from '@middlewares/auth.middleware';
+} from './../../../controllers/user.controller';
+import { protect, authorize } from './../../../middlewares/auth.middleware';
 import { 
     userValidationRules
-} from '@utils/validation.util';
-import { validate } from '@middlewares/validator.middleware';
+} from './../../../utils/validation.util';
+import { validate } from './../../../middlewares/validator.middleware';
 
 const router = express.Router();
 
