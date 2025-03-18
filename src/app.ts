@@ -1,11 +1,9 @@
-// src/app.ts
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import path from 'path';
 import dotenv from 'dotenv';
-
-
-// Import routes
+import connectDB from './config/database';
+import logger from './config/logger';
 import adminRoutes from './routes/v1/admin';
 
 // Load environment variables
@@ -14,9 +12,11 @@ dotenv.config();
 const app = express();
 
 // Connect to MongoDB
-// connectDB()
-//   .then(() => console.log('Database connection initialized'))
-//   .catch(err => console.error('Failed to initialize database connection:', err));
+try {
+  connectDB();
+} catch (error) {
+  logger.error('MongoDB connection error:', error);
+}
 
 // CORS configuration
 const corsOptions = {
