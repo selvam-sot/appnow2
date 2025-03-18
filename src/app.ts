@@ -2,8 +2,8 @@ import express, { Request, Response } from 'express';
 import cors from 'cors';
 import path from 'path';
 import dotenv from 'dotenv';
-import connectDB from './config/database';
-import logger from './config/logger';
+//import connectDB from './config/database';
+//import logger from './config/logger';
 import adminRoutes from './routes/v1/admin';
 
 // Load environment variables
@@ -12,11 +12,11 @@ dotenv.config();
 const app = express();
 
 // Connect to MongoDB
-try {
-  connectDB();
-} catch (error) {
-  logger.error('MongoDB connection error:', error);
-}
+//try {
+//  connectDB();
+//} catch (error) {
+//  logger.error('MongoDB connection error:', error);
+//}
 
 // CORS configuration
 const corsOptions = {
