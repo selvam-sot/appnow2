@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import logger from './logger';
 
 //const mongodbUrl = 'mongodb://127.0.0.1:27017/appnow';
-const mongodbUrl = '';
+const mongodbUrl = 'mongodb://appointmentnowdb:3mQCMfdjGkJhkKdHKORs4xDuHarCDVs8kSnxGWouwVV1hzE6wxfkBFGncNjN9s8TRbz7aNvKU0wzACDbGCABtQ%3D%3D@appointmentnowdb.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&maxIdleTimeMS=120000&appName=@appointmentnowdb@';
 
 // Store the client connection
 let mongoClient: MongoClient | null = null;
